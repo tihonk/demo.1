@@ -6,6 +6,7 @@ import com.example.demo1.util.RestResponse;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParseException;
 import org.springframework.http.HttpStatus;
@@ -37,13 +38,13 @@ public class UserController {
     }
     private boolean validate (User user){
         boolean isValid = true;
-        if(user.getFirstName() == null){
+        if(StringUtils.trimToNull(user.getFirstName()) == null){
             isValid = false;
         }
-        if(user.getFirstSurname() == null){
+        if(StringUtils.trimToNull(user.getFirstSurname()) == null){
             isValid = false;
         }
-        if(user.getAdress() == null){
+        if(StringUtils.trimToNull(user.getAdress())== null){
             isValid = false;
         }
         return isValid;
