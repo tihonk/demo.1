@@ -42,6 +42,16 @@ public class UserController {
     public List<User> getUsers() {
         return this.userService.findAll();
     }
+    @RequestMapping(value="/deleteUser", method = RequestMethod.POST)
+    public void deleteUser(@RequestBody String userJson) throws Exception {
+        this.mapper = new ObjectMapper();
+        User user = this.mapper.readValue(userJson, User.class);
+        if(user.getId() == null){
+            throw new Exception("Id isn't found.");
+        }
+        this.userService.deleteUser(user.getId());
+    }
+
     private boolean validate (User user){
         boolean isValid = true;
         if(StringUtils.trimToNull(user.getFirstName()) == null){
