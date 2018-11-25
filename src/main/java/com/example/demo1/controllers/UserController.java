@@ -2,7 +2,6 @@ package com.example.demo1.controllers;
 
 import com.example.demo1.model.User;
 import com.example.demo1.service.UserService;
-import com.example.demo1.util.QueryResult;
 import com.example.demo1.util.RestResponse;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
