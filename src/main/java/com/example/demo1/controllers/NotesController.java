@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.Lob;
 import java.io.IOException;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class NotesController {
     @Autowired
     protected NotesService notesService;
     protected ObjectMapper mapper;
+    @Lob
     @RequestMapping(value="/saveNotes", method = RequestMethod.POST)
     public RestResponse saveNotes(@RequestBody String notesJson) throws IOException, JsonParseException {
         this.mapper = new ObjectMapper();
